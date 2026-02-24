@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <AssemblyName>TyDll</AssemblyName>
+    <RootNamespace>TyDll</RootNamespace>
+    <LangVersion>12</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <!-- Embedded Resources: TXT files -->
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\TXT\*.txt" />
+    <EmbeddedResource Include="Resources\DIC\*.txt" />
+  </ItemGroup>
+
+  <!-- Embedded Resources: QQ UI images -->
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\QQ\FormFrame\*.png" />
+    <EmbeddedResource Include="Resources\QQ\SysButton\*.png" />
+  </ItemGroup>
+
+  <!-- Content files: QQ UI theme resources -->
+  <ItemGroup>
+    <Content Include="Resources\QQ\Button\*.png" />
+    <Content Include="Resources\QQ\CheckBox\*.png" />
+    <Content Include="Resources\QQ\ComboBox\*.png" />
+    <Content Include="Resources\QQ\ContextMenu\*.png" />
+    <Content Include="Resources\QQ\head.png" />
+    <Content Include="Resources\QQ\ListBox\*.*" />
+    <Content Include="Resources\QQ\RadioButton\*.png" />
+    <Content Include="Resources\QQ\ScrollBar\*.png" />
+    <Content Include="Resources\QQ\SkinMgr\*.png" />
+    <Content Include="Resources\QQ\TabControl\*.png" />
+    <Content Include="Resources\QQ\TextBox\*.png" />
+    <Content Include="Resources\QQ\ToolButton\*.png" />
+    <Content Include="Resources\QQ\UserList\*.png" />
+  </ItemGroup>
+
+</Project>

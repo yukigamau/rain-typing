@@ -1,0 +1,30 @@
+默认快捷键列表(可修改)：
+设置		F1
+发文		F2
+重打		F3
+暂停		F4
+复制当前文段	F5
+复制上次成绩	F6
+复制图片成绩	Ctrl+T
+发上一段	Ctrl+P
+发下一段	Ctrl+N
+速度分析	Ctrl+G
+跟打报告	Ctrl+J
+按键统计	Ctrl+K
+理论按键统计	Ctrl+M
+历史记录	Ctrl+H
+保存发文配置	Ctrl+S
+乱序重打	Ctrl+L
+停止发文	Ctrl+W
+查询当前编码	Ctrl+F
+打开练习	Ctrl+O
+测速数据	Ctrl+I
+窗口复位	Ctrl+D
+检验真伪	Alt+D
+从剪贴板直接载文	Alt+E
+从剪贴板格式载文	Alt+S
+老板键(全局)	Alt+Q
+
+内部快捷键(不可修改)：
+载文下一段	Ctrl+右
+载文上一段	Ctrl+左
