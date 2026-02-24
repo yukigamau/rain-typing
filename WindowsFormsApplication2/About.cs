@@ -11,88 +11,93 @@ using System.Reflection;
 
 namespace WindowsFormsApplication2
 {
-	public partial class About : Form
-	{
-		public About()
-		{
-			InitializeComponent();
-			this.Text = string.Format("关于 {0}", AssemblyTitle);
-			string bitVal;
-			if (Glob.Bit.Length > 0)
-			{
-				bitVal = " (64-bit)";
-			}
-			else
-			{
-				bitVal = " (32-bit)";
-			}
-			this.labelVersion.Text = "v" + Glob.Ver + bitVal;
-		}
+    public partial class About : Form
+    {
+        public About()
+        {
+            InitializeComponent();
+            this.Text = string.Format("关于 {0}", AssemblyTitle);
+            string bitVal;
+            if (Glob.Bit.Length > 0)
+            {
+                bitVal = " (64-bit)";
+            }
+            else
+            {
+                bitVal = " (32-bit)";
+            }
+            this.labelVersion.Text = "v" + Glob.Ver + bitVal;
+        }
 
-		private void Jump(string str)
-		{
-			try
-			{
-				Process.Start(new ProcessStartInfo(str) { UseShellExecute = true });
-			}
-			catch (Exception)
-			{
+        private void Jump(string str)
+        {
+            try
+            {
+                Process.Start(new ProcessStartInfo(str) { UseShellExecute = true });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("打开失败：" + ex.Message);
+            }
+        }
 
-			}
-		}
+        private DateTime Start = new DateTime(2021, 11, 25);
+        private DateTime curStart = new DateTime(2026, 2, 24);
+        private void Start_Load(object sender, EventArgs e)
+        {
+            var dis = DateTime.Now - Start;
+            var curDis = DateTime.Now - curStart;
+            lblInfo.Text = string.Format(
+                "雨天跟打器从{0}发布至今已过去{1}天\n雨雨跟打器从{2}发布至今已过去{3}天",
+                Start.ToShortDateString(), dis.TotalDays.ToString("0"),
+                curStart.ToShortDateString(), curDis.TotalDays.ToString("0"));
+        }
 
-		private DateTime Start = new DateTime(2021, 11, 25);
-		private DateTime curStart = new DateTime(2026, 2, 24);
-		private void Start_Load(object sender, EventArgs e)
-		{
-			var dis = DateTime.Now - Start;
-			var curDis = DateTime.Now - curStart;
-			lblInfo.Text = string.Format(
-				"雨天跟打器从{0}发布至今已过去{1}天\n雨雨跟打器从{2}发布至今已过去{3}天",
-				Start.ToShortDateString(), dis.TotalDays.ToString("0"),
-				curStart.ToShortDateString(), curDis.TotalDays.ToString("0"));
-		}
+        #region 程序集特性访问器
+        public string AssemblyTitle
+        {
+            get
+            {
+                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
+                if (attributes.Length > 0)
+                {
+                    AssemblyTitleAttribute titleAttribute = (AssemblyTitleAttribute)attributes[0];
+                    if (titleAttribute.Title != "")
+                    {
+                        return titleAttribute.Title;
+                    }
+                }
+                return System.IO.Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().CodeBase);
+            }
+        }
 
-		#region 程序集特性访问器
-		public string AssemblyTitle
-		{
-			get
-			{
-				object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
-				if (attributes.Length > 0)
-				{
-					AssemblyTitleAttribute titleAttribute = (AssemblyTitleAttribute)attributes[0];
-					if (titleAttribute.Title != "")
-					{
-						return titleAttribute.Title;
-					}
-				}
-				return System.IO.Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().CodeBase);
-			}
-		}
+        public string AssemblyVersion
+        {
+            get
+            {
+                return Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            }
+        }
+        #endregion
 
-		public string AssemblyVersion
-		{
-			get
-			{
-				return Assembly.GetExecutingAssembly().GetName().Version.ToString();
-			}
-		}
-		#endregion
+        private void LinkLabel1Clicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Jump("https://github.com/taliove/tygdq");
+        }
 
-		private void LinkLabel1Clicked(object sender, LinkLabelLinkClickedEventArgs e)
-		{
-			Jump("https://github.com/taliove/tygdq");
-		}
+        private void LinkLabelSourceCodeClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Jump(Glob.HomeUrl);
+        }
 
-		private void LinkLabel2Clicked(object sender, LinkLabelLinkClickedEventArgs e)
-		{
-			Jump(Glob.HomeUrl);
-		}
+        private void OKClicked(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
-		private void OKClicked(object sender, EventArgs e)
-		{
-			this.Close();
-		}
-	}
+        private void linkLabelLastProject_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Jump("https://github.com/LightAPIs/ytgdq");
+        }
+    }
 }

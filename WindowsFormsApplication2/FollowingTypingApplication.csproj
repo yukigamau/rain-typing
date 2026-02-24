@@ -5,7 +5,7 @@
     <OutputType>WinExe</OutputType>
     <UseWindowsForms>true</UseWindowsForms>
     <UseWPF>true</UseWPF>
-    <AssemblyName>雨天跟打器</AssemblyName>
+    <AssemblyName>雨雨跟打器</AssemblyName>
     <RootNamespace>WindowsFormsApplication2</RootNamespace>
     <ApplicationIcon>rain.ico</ApplicationIcon>
     <LangVersion>12</LangVersion>

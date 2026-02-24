@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="AnyCPU" />
+  </Configurations>
+  <Project Path="TyDll/TyDll.csproj" />
+  <Project Path="WindowsFormsApplication2/FollowingTypingApplication.csproj" />
+</Solution>

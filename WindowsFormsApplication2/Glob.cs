@@ -19,9 +19,13 @@ namespace WindowsFormsApplication2
     /// </summary>
     public class Glob
     {
+        public static string ProName = "雨雨跟打器";
+
         public static string Ver = "1.0.0";
 
-        public static string Form = "雨雨跟打器" + Bit + " v" + Ver + Project;
+        public static string Form = ProName + Bit + " v" + Ver + Project;
+
+        public static string Font = "宋体";
 
         public static string Project
         {
@@ -56,8 +60,8 @@ namespace WindowsFormsApplication2
         //public static string DownloadUrl = "http://dogegg.ysepan.com/";
         //public static string HomeUrl = "https://github.com/LightAPIs/ytgdq";
         //public static string UsageUrl = "https://github.com/LightAPIs/ytgdq/wiki";
-        public static string DownloadUrl = "http://dogegg.ysepan.com/";
-        public static string HomeUrl = "https://github.com/LightAPIs/ytgdq";
+        public static string DownloadUrl = "https://github.com/yukigamau/rain-typing/releases";
+        public static string HomeUrl = "https://github.com/yukigamau/rain-typing";
         public static string UsageUrl = "https://github.com/LightAPIs/ytgdq/wiki";
 
         /// <summary>
