@@ -21,7 +21,7 @@ namespace WindowsFormsApplication2
     {
         public static string ProName = "雨雨跟打器";
 
-        public static string Ver = "1.0.0";
+        public static string Ver = "1.0.1";
 
         public static string Form = ProName + Bit + " v" + Ver + Project;
 

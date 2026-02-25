@@ -225,7 +225,7 @@ namespace WindowsFormsApplication2
 			this.toolStripButton4.Checked =
 				!bool.TryParse(IniRead("程序控制", "详细信息", "True"), out bool t4) || t4;
 			int p11HInit = 142;
-			int p31HInit = 89;
+			int p31HInit = 98;
 			int p11H = int.TryParse(IniRead("拖动条", "高1", p11HInit.ToString()), out p11H) ? p11H : p11HInit;
 			int p31H = int.TryParse(IniRead("拖动条", "高2", p31HInit.ToString()), out p31H) ? p31H : p31HInit;
 			this.splitContainer1.SplitterDistance = p11H;
@@ -547,7 +547,7 @@ namespace WindowsFormsApplication2
 			// 字体
 			FontConverter fc = new FontConverter();
 			Theme.Font_1 = (Font)fc.ConvertFromString(themeConf.IniReadValue("外观", "对照区字体", "宋体, 21.75pt"));
-			Theme.Font_2 = (Font)fc.ConvertFromString(themeConf.IniReadValue("外观", "跟打区字体", "宋体, 16pt"));
+			Theme.Font_2 = (Font)fc.ConvertFromString(themeConf.IniReadValue("外观", "跟打区字体", "宋体, 21.75pt"));
 
 			// 载入颜色设置
 			richTextBox1.BackColor = Theme.R1Back;

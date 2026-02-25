@@ -1052,7 +1052,7 @@
             contextMenuStripMain.ImageScalingSize = new System.Drawing.Size(24, 24);
             contextMenuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { tsmiFindSelectionBm, toolStripSeparator1, 添加测速点ToolStripMenuItem, 清除测速点ToolStripMenuItem, 自动寻找赛文标记ToolStripMenuItem });
             contextMenuStripMain.Name = "contextMenuStripMain";
-            contextMenuStripMain.Size = new System.Drawing.Size(243, 163);
+            contextMenuStripMain.Size = new System.Drawing.Size(243, 130);
             // 
             // tsmiFindSelectionBm
             // 
@@ -1095,7 +1095,6 @@
             // 
             textBoxEx1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             textBoxEx1.BackColor = System.Drawing.Color.White;
-            textBoxEx1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             textBoxEx1.Font = new System.Drawing.Font("宋体", 14F);
             textBoxEx1.ForeColor = System.Drawing.Color.Black;
             textBoxEx1.HideSelection = false;
