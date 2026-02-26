@@ -21,11 +21,14 @@ namespace WindowsFormsApplication2
     {
         public static string ProName = "雨雨跟打器";
 
-        public static string Ver = "1.0.1";
+        public static string Ver = "1.0.2";
 
         public static string Form = ProName + Bit + " v" + Ver + Project;
 
-        public static string Font = "宋体";
+        public static int spW = 2035;
+        public static int spH = 600;
+        public static int p11HInit = 142;
+        public static int p31HInit = 98;
 
         public static string Project
         {

@@ -216,16 +216,18 @@ namespace WindowsFormsApplication2
 
 			spX = int.TryParse(IniRead("窗口位置", "横", "200"), out spX) ? spX < 0 ? 200 : spX : 200;
 			spY = int.TryParse(IniRead("窗口位置", "纵", "200"), out spY) ? spY < 0 ? 200 : spY : 200;
-			spW = int.TryParse(IniRead("窗口位置", "宽", "2035"), out spW) ? spW < 200 ? 520 : spW : 520;
-			spH = int.TryParse(IniRead("窗口位置", "高", "600"), out spH) ? spH < 50 ? 480 : spH : 480;
+			spW = int.TryParse(IniRead("窗口位置", "宽", Glob.spW.ToString()), out spW) ?
+				spW < 200 ? 520 : spW : 520;
+			spH = int.TryParse(IniRead("窗口位置", "高", Glob.spH.ToString()), out spH) ?
+				spH < 50 ? 480 : spH : 480;
 			Point pos = new Point(spX, spY);
 			this.Location = pos;
 			this.Size = new Size(spW, spH);
 
 			this.toolStripButton4.Checked =
 				!bool.TryParse(IniRead("程序控制", "详细信息", "True"), out bool t4) || t4;
-			int p11HInit = 142;
-			int p31HInit = 98;
+			int p11HInit = Glob.p11HInit;
+			int p31HInit = Glob.p31HInit;
 			int p11H = int.TryParse(IniRead("拖动条", "高1", p11HInit.ToString()), out p11H) ? p11H : p11HInit;
 			int p31H = int.TryParse(IniRead("拖动条", "高2", p31HInit.ToString()), out p31H) ? p31H : p31HInit;
 			this.splitContainer1.SplitterDistance = p11H;
@@ -818,7 +820,7 @@ namespace WindowsFormsApplication2
 			this.dataGridView1.Rows[0].DefaultCellStyle.Font = new Font("宋体", 11f);
 			this.dataGridView1.Rows[0].DefaultCellStyle.BackColor = Theme.ThemeColorBG;
 			this.dataGridView1.Rows[0].DefaultCellStyle.ForeColor = Theme.ThemeColorFC;
-			this.dataGridView1.Rows[0].Height = 30;
+			this.dataGridView1.Rows[0].Height = 35;
 			//跟打地图
 			Bitmap bmp_ = new Bitmap(this.picMap.ClientRectangle.Width, this.picMap.ClientRectangle.Height);
 			this.picMap.Image = bmp_;
@@ -5748,18 +5750,18 @@ namespace WindowsFormsApplication2
 		#region 窗口复位
 		private void toolStripMenuItem1_Click(object sender, EventArgs e)
 		{
-			int getW = this.dataGridView1.Columns.GetColumnsWidth(DataGridViewElementStates.None) + 8;
-			if (getW < 1280)
-			{
-				getW = 1280;
-			}
-			this.Size = new Size(getW, 480);
+			//int getW = this.dataGridView1.Columns.GetColumnsWidth(DataGridViewElementStates.None) + 8;
+			//if (getW < 1280)
+			//{
+			//	getW = Glob.spW;
+			//}
+			this.Size = new Size(Glob.spW, Glob.spH);
 
 			this.splitContainer1.Panel2Collapsed = false;
-			this.splitContainer1.SplitterDistance = 142;
+			this.splitContainer1.SplitterDistance = Glob.p11HInit;
 
 			this.splitContainer3.Panel2Collapsed = false;
-			this.splitContainer3.SplitterDistance = 89;
+			this.splitContainer3.SplitterDistance = Glob.p31HInit;
 
 			this.splitContainer4.Panel2Collapsed = false;
 			this.splitContainer4.SplitterDistance = 206;
@@ -6158,19 +6160,25 @@ namespace WindowsFormsApplication2
 			string startupPath = Environment.GetFolderPath(Environment.SpecialFolder.Startup);
 			//获取当前系统用户桌面目录
 			string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-			FileInfo fileStartup = new FileInfo(startupPath + "\\雨天跟打器.lnk");
 
-			FileInfo fileDesktop = new FileInfo(desktopPath + "\\雨天跟打器.lnk");
-			if (!fileDesktop.Exists)
-			{
-				ShortcutHelper.CreateShortcut(
-					Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\雨天跟打器.lnk",
-					Application.ExecutablePath,
-					System.Environment.CurrentDirectory,
-					"雨天跟打器",
-					Application.ExecutablePath,
-					1);
-			}
+			string fileInfo = startupPath + "\\" + Glob.ProName + ".lnk";
+			FileInfo fileStartup = new FileInfo(fileInfo);
+			string sFileDesktop = desktopPath + "\\" + Glob.ProName + ".lnk";
+			FileInfo fileDesktop = new FileInfo(sFileDesktop);
+
+			if (fileDesktop.Exists)
+				return;
+
+			string shortcutPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)
+				+ "\\" + Glob.ProName + ".lnk";
+			ShortcutHelper.CreateShortcut(
+				shortcutPath,
+				Application.ExecutablePath,
+				System.Environment.CurrentDirectory,
+				Glob.ProName,
+				Application.ExecutablePath,
+				1);
+
 			// 开机启动的方法
 			/*
 			  if (!fileStartup.Exists)
